@@ -18,7 +18,7 @@ import static org.springframework.http.ResponseEntity.ok;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
-@RequestMapping(value = "/api/v1/hello", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v2/sample", produces = APPLICATION_JSON_VALUE)
 @Api(value = "Search", description = "Test APIs")
 public class DemoController {
 

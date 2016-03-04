@@ -42,7 +42,7 @@ public class SwaggerConfiguration
 
 				.apiInfo(createApiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.example"))
+				.apis(RequestHandlerSelectors.basePackage("com.qlective"))
 				.paths(PathSelectors.regex("/api/.*"))
 
 				.build();
