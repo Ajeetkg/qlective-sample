@@ -1,4 +1,4 @@
-package com.example;
+package com.qlective;
 
 
 import org.springframework.context.annotation.Bean;

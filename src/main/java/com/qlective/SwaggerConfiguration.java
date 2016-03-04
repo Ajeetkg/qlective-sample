@@ -1,7 +1,7 @@
 /**
  * Copyright Illumina, Inc. 2016
  */
-package com.example;
+package com.qlective;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

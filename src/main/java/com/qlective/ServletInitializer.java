@@ -1,4 +1,4 @@
-package com.example;
+package com.qlective;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
