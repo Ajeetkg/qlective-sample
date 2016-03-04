@@ -1,0 +1,17 @@
+alias lsvagrant="clear; cd /Users/agupta2/Documents/Workspace/GIT_ILLUMINA/ontology/ontology-devops/vagrant;lsl"
+alias lsserver="clear; cd /Users/agupta2/Documents/Workspace/GIT_ILLUMINA/ontology/ontology-server;lsl"
+alias taillogs="clear; tail -f -n 100 /tmp/logs/ontology-debug.log"
+alias vilogs="clear; vi /tmp/logs/ontology-debug.log"
+alias onthome="clear; cd /Users/agupta2/Documents/Workspace/GIT_ILLUMINA/ontology/ontology-server/";
+alias tombin="clear; cd /Users/agupta2/Documents/Softwares/apache-tomcat-8.0.27/bin"
+alias tomlogs="clear; cd /Users/agupta2/Documents/Softwares/apache-tomcat-8.0.27/logs"
+alias tomapps="clear; cd /Users/agupta2/Documents/Softwares/apache-tomcat-8.0.27/webapps"
+alias tailcatalina="clear; tail -n 1000 -f /Users/agupta2/Documents/Softwares/apache-tomcat-8.0.27/logs/catalina.out"
+alias clearlogs="clear; rm -rf /Users/agupta2/Documents/Softwares/apache-tomcat-8.0.27/logs/*; "
+alias workspace="clear; cd /Users/agupta2/Documents/Workspace/"
+alias cdbin="clear; cd /Users/agupta2/bin"
+alias ls='\ls -FG'
+alias lsl='\ls -FGaltrh'
+alias dropbox="cd /Users/agupta2/Dropbox"
+alias killjava="clear; pgrep java | xargs kill -9";
+alias cdansible="cd /Users/agupta2/Documents/Workspace/Devops/devops/clinical-deployment"

@@ -1,0 +1,16 @@
+*.vagrant
+.vagrant/
+*.metadata/
+*.iml
+*.idea
+.idea/
+*swp
+.settings
+*.class
+*.bak
+*.war
+*.project
+*.log*
+ontology-solr-*-SNAPSHOT.jar
+target/
+
