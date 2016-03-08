@@ -1,6 +1,6 @@
 package com.example;
 
-import com.qlective.Demo2Application;
+import com.ajeetkg.Demo2Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.web.WebAppConfiguration;
