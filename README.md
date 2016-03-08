@@ -1,4 +1,4 @@
-# Sample
+# Qlective-sample
 
 ### Sample Application
 

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.illumina</groupId>
+	<groupId>com.qlective</groupId>
 	<artifactId>sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -65,37 +65,6 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>${springfox-swagger2.version}</version>
 		</dependency>
-<!--
-
-		<dependency>
-			<groupId>com.nextbio</groupId>
-			<artifactId>nb-redis-client</artifactId>
-			<version>0.0.0-SNAPSHOT</version>
-		</dependency>
--->
-
-
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-			<version>1.6.0.RELEASE</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>2.8.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-            <version>2.4.2</version>
-        </dependency>
-
 	</dependencies>
 	
 	<build>
