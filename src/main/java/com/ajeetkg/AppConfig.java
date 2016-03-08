@@ -1,4 +1,4 @@
-package com.qlective;
+package com.ajeetkg;
 
 
 import org.springframework.context.annotation.Bean;
