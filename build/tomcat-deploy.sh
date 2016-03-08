@@ -9,10 +9,10 @@ HIGHLIGHTER="[*******************************************************] -----> "
 TOMCAT_HOME=/Users/agupta2/Documents/Softwares/apache-tomcat-8.0.27    # Change this.
 
 #App name
-APP_NAME=qlective-sample
+APP_NAME=sample
 
 #Set the Workspace
-WORKSPACE=/Users/agupta2/Documents/ajeetgupta/git/qlective-sample  #Change this.
+WORKSPACE=/Users/agupta2/Documents/ajeetgupta/git/sample  #Change this.
 
 cd ${WORKSPACE}/
 echo $HIGHLIGHTER "Build the "${APP_NAME}" application"
