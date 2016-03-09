@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 public class HelloServiceImpl implements HelloService{
 
     @Override
-    @Cacheable(value="messageCache", key = "illumina")
-    public String getMessage(String name){
-        System.out.println(
-                "Executing the HelloServiceImpl.getMessage for : " + name
-        );
+    @Cacheable(value="messageCache", condition="'illumina'.equals(#name)")
+    public String getMessage(String name) {
 
-        return "Hello "+ name;
+        System.out.println("Executing HelloServiceImpl" +
+                ".getHelloMessage(\"" + name + "\")");
+
+        return "Hello " + name + "!";
     }
 
 

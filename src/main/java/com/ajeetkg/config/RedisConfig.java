@@ -2,6 +2,8 @@ package com.ajeetkg.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -15,8 +17,9 @@ import org.springframework.data.redis.core.RedisTemplate;
  */
 
 @Configuration
+@EnableCaching
 @PropertySource("classpath:/redis.properties")
-public class RedisConfig {
+public class RedisConfig extends CachingConfigurerSupport{
 
     @Value("${redis.hostname}")
     String hostname;
@@ -31,7 +34,7 @@ public class RedisConfig {
 
 
     @Bean
-    JedisConnectionFactory jedisConnectionFactory(){
+    public JedisConnectionFactory jedisConnectionFactory(){
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
         jedisConnectionFactory.setHostName(hostname);
         jedisConnectionFactory.setPort(port);
@@ -42,15 +45,17 @@ public class RedisConfig {
 
 
     @Bean
-    RedisTemplate<Object, Object> redisTemplate(){
+    public RedisTemplate<Object, Object> redisTemplate(){
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());
         return redisTemplate;
     }
 
     @Bean
-    CacheManager cacheManager(){
-        return new RedisCacheManager(redisTemplate());
+    public CacheManager cacheManager(){
+        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate());
+        cacheManager.setDefaultExpiration(300);
+        return cacheManager;
     }
 
 }
