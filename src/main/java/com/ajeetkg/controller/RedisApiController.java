@@ -47,6 +47,7 @@ public class RedisApiController {
     @ApiResponses(
             value={@ApiResponse(code = 200, message = "Success")}
     )
+
     public ResponseEntity testHello(){
 
         //First method execution using key="Josh", not cached
