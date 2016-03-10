@@ -1,21 +1,17 @@
 package com.ajeetkg.controller;
 
 import com.ajeetkg.service.HelloService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static org.springframework.http.ResponseEntity.ok;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -33,6 +29,9 @@ public class RedisApiController {
 
     @Autowired
     HelloService helloService;
+
+    @Autowired
+    RedisTemplate<String, String> redisTemplate;
 
     @RequestMapping(
             value = "/hello",
@@ -100,5 +99,74 @@ public class RedisApiController {
         return null;
     }
 
+
+
+    @RequestMapping(
+            value = "/token",
+            method = RequestMethod.GET,
+            produces = APPLICATION_JSON_VALUE
+    )
+    @ApiOperation(
+            httpMethod = "GET",
+            value = "Get the Token if it exists"
+    )
+    @ApiResponses(
+            @ApiResponse(code = 200, message = "Success")
+    )
+    public String getTokenInfo(@ApiParam(value = "12345-abc", required = true)
+                               @RequestParam(value = "token" , required = true) String psToken) {
+
+        String result;
+
+        logger.debug("Getting value for the psToken:    " + psToken);
+        if (tokenExists(psToken)) {
+            logger.debug("tokenExists(psToken) is true for psToken:    " + psToken);
+            result = getRemainingExpiryTime(psToken) + "";
+        } else {
+            logger.debug("Token already expired :    " + psToken);
+            result = "Token already expired";
+        }
+
+        return result;
+
+    }
+
+
+    @RequestMapping(
+            value = "/token",
+            method = RequestMethod.POST,
+            produces = APPLICATION_JSON_VALUE
+    )
+    @ApiOperation(
+            httpMethod = "POST",
+            value = "Post the token"
+    )
+    @ApiResponses(
+            @ApiResponse(code = 200, message = "Success")
+    )
+    public String saveToken(@ApiParam(value = "12345-abc", required = true)
+                            @RequestParam(value = "token") String psToken) {
+
+        storePsToken(psToken);
+        String result = getRemainingExpiryTime(psToken) + "";
+        return result;
+
+    }
+
+    public void storePsToken(String psToken) {
+        logger.debug("Store psToken: " + psToken+", for 30 seconds");
+        redisTemplate.boundValueOps(psToken).set("IllumianIsGreatCompany");
+        redisTemplate.boundValueOps(psToken).expire(30l, TimeUnit.SECONDS);
+    }
+
+    public boolean tokenExists(String psToken) {
+        logger.debug("Store psToken: " + psToken+", for 30 seconds");
+        return redisTemplate.hasKey(psToken);
+    }
+
+    public long getRemainingExpiryTime(String psToken) {
+        logger.debug("SgetRemainingExpiryTime() for psToken: "+psToken);
+        return redisTemplate.getExpire(psToken);
+    }
 
 }
