@@ -1,0 +1,34 @@
+#GHERKIN+CUCUMBER business rules scenario writing
+
+Scenario Outline: Connect USB Power cable
+Given USB power cable is connected with the power outlet & speaker USB port
+Then speaker should get charged
+And LED light should blink
+Examples:
+ LED blinks red when it is low on charge
+ LED blinks yellow when charging
+ LED blinks green when fully charged
+
+Scenario Outline: Connect USB Power cable multiple times
+ Given USB power cable is connected with the power outlet & speaker USB port & reconnected repeatedly
+ Then speaker should get charged
+ And LED light should blink
+Examples:
+  | Original Position | Changed Position       | Action |
+  | Not plugged       | plugged in to socket   |  starts charging|
+  | Plugged in        | plugged out            |  stops charging|
+
+Scenario Outline: ON/OFF/BT switch works fine
+Given the switch is in <Original Position> position and it is fully charged
+Then moving the switch to <Changed Position> <Action>
+Examples:
+  | Original Position | Changed Position | Action |
+  | Off               | On               |  makes sound to confirm connectivity, LED light turns on|
+  | On               | Off               |  makes sound to confirm  loss of connectivity And LED light turns off |
+  | Off              | BT               |  Connects to the device And playing a sound on connected device plays the sound on the speaker|
+  | BT               | Off               |  makes sound to confirm  loss of connectivity to device|
+
+Scenario Outline: Volume Control
+Given the switch is connected via BT to the device
+Then increasing the volume increases the volumen
+And decreasing the volume decrease the sound
