@@ -1,4 +1,4 @@
-package com.ajeetkg;
+package com.ajeetkg.config;
 
 
 import org.springframework.context.annotation.Bean;

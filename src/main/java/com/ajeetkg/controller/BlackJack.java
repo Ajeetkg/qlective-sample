@@ -27,7 +27,7 @@ public class BlackJack {
 
     //result - calculate sum and find the one who is closest to 21 or over - win or busted
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
 
         BlackJack blackJack = new BlackJack();
         String action = blackJack.takeAction();

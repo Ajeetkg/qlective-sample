@@ -1,5 +1,6 @@
-package com.ajeetkg;
+package com.ajeetkg.config;
 
+import com.ajeetkg.Demo2Application;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
