@@ -12,3 +12,6 @@ This contains the following technology stack
 * Spring web
 * Redis Cache
 * Docker
+
+
+This code has sample authentication feature.
